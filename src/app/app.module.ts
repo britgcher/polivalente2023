@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { HeaderModule } from './header/header.module';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
@@ -19,6 +19,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
     BrowserModule, 
     IonicModule.forRoot(),
     AppRoutingModule,
+    HeaderModule,
     
     //importação de funções para que o firebase funcione no projeto
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), 

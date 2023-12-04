@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'semacucar',
+    loadChildren: () => import('./semacucar/semacucar.module').then( m => m.SemacucarPageModule)
   }
+
 ];
 
 @NgModule({

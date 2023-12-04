@@ -1,0 +1,199 @@
+<ion-content [fullscreen]="true">
+  <ion-row class="ion-justify-content-center" id="paginaprincipal">
+    <ion-col size="12" class="ion-text-center full-height">
+
+      <!-- header -->
+      <app-header></app-header>
+
+      <!-- titulo -->
+      <ion-row class="ion-align-items-center" id="tituloid">
+        <ion-col></ion-col>
+        <ion-col size="3" size-lg="3" id="divider"></ion-col>
+        <ion-col size="4" size-lg="3" id="titulo">Receitas</ion-col>
+        <ion-col size="3" size-lg="3" id="divider"></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+
+      <!-- meio do site -->
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12" size-lg="10" class="ion-align-items-center ion-text-center">
+
+          <!-- imagens receita -->
+          <ion-row>
+            <!-- Coluna da esquerda -->
+            <ion-col size="2" size-lg="1">
+              <ion-row>
+                <ion-col>
+                  anuncio cis
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <!-- Coluna do meio -->
+            <ion-col size="8" size-lg="10" class="ion-align-items-center ion-justify-content-center">
+              <ion-row>
+                <ng-container *ngFor="let receita of receitas">
+                  <!-- Verifica se a receita é sem açúcar -->
+                  <ng-container *ngIf="receita.semAcucar === true">
+                    <ion-col size="12" size-md="6" size-lg="4">
+                      <div class="imagemprincipal" (click)="setOpen(true, receita)"
+                        [ngStyle]="{'background-image' : receita.src ? 'url(' + receita.src +')' : 'url('+ img_not_found +')'}">
+                      </div>
+                    </ion-col>
+                  </ng-container>
+                </ng-container>
+              </ion-row>
+            </ion-col>
+            
+
+
+            <!-- Coluna da direita -->
+            <ion-col size="2" size-lg="1">
+              <ion-row class="filtrar">
+                <ion-col>
+                  <ion-icon id="open-modal" size="large" shape="round" class="iconebotao"
+                    name="filter-circle-outline"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+
+      <!-- NUMEROS PAGINA -->
+      <ion-row class="align-items-center ion-text-center ion-justify-content-center" id="rownumerospagina">
+        <ion-col size-lg="8" size-md="10" size="12"
+          class="align-items-center ion-text-center ion-justify-content-center" id="paginanumeros">
+
+          <ion-col size-lg="3" size-md="2" size="0" id="tracoesquerdo"></ion-col>
+
+          <ion-col id="colunaiconeesquerda" size-md="1" size="2">
+            <ion-icon name="chevron-back-outline" id="iconeesquerda"></ion-icon>
+          </ion-col>
+
+          <ion-col size-lg="4" size-md="5" size="8">
+            <ion-row>
+              <ion-col id="colunanumeros">
+                <h5 id="numeros">1</h5>
+              </ion-col>
+              <ion-col id="colunanumeros">
+                <h5 id="numeros">2</h5>
+              </ion-col>
+              <ion-col id="colunanumeros">
+                <h5 id="numeros">3</h5>
+              </ion-col>
+              <ion-col id="colunanumeros">
+                <h5 id="numeros">4</h5>
+              </ion-col>
+              <ion-col id="colunanumeros">
+                <h5 id="numeros">5</h5>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col id="colunaiconedireita" size-md="1" size="2">
+            <ion-icon name="chevron-forward-outline" id="iconedireita"></ion-icon>
+          </ion-col>
+
+          <ion-col size-lg="3" size-md="2" size="0" id="tracodireito"></ion-col>
+
+        </ion-col>
+      </ion-row>
+
+      <!-- FOOTER -->
+      <ion-row class="ion-justify-content-center" id="footer">
+
+        <ion-col size="4" id="colunasfooter">
+          <ion-title id="redesfooter">Redes Sociais</ion-title>
+          <ion-icon name="logo-tiktok" id="iconesredes"></ion-icon>
+          <ion-icon name="logo-instagram" id="iconesredes"></ion-icon>
+        </ion-col>
+
+        <ion-col size="4" id="colunasfooter">
+          <ion-title id="titulofooter">Polivalente</ion-title>
+          <img src="../../assets/polivalente.png" width="70px" height="70px" id="logofooter">
+        </ion-col>
+
+        <ion-col size="4" id="colunasfooter">
+          <ion-title id="titulofooter">Envie-nos sua receita!</ion-title>
+          <ion-icon name="mail-outline" id="iconesredes"></ion-icon>
+        </ion-col>
+
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<!-- Modal Filtrar -->
+<ion-modal trigger="open-modal">
+  <ion-content class="ion-padding">
+    <ng-template>
+
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col id="caixamodalreceita" size="10">
+
+          <ion-row class="ion-text-center">
+            <ion-col>
+              <h1 id="titulotipo">Tipo</h1>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-center ion-justify-content-center">
+            <ion-col size="10" id="caixamodalreceitaopcoes">
+              <ion-checkbox labelPlacement="end">Entrada</ion-checkbox>
+              <br />
+              <ion-checkbox labelPlacement="end">Prato principal</ion-checkbox>
+              <br />
+              <ion-checkbox labelPlacement="end">Petisco</ion-checkbox>
+              <br />
+              <ion-checkbox labelPlacement="end">Bebida</ion-checkbox>
+              <br />
+              <ion-checkbox labelPlacement="end">Sobremesa</ion-checkbox>
+              <br />
+
+              <ion-row class="ion-text-center ion-justify-content-center ion-align-items-center">
+                <ion-col size="6">
+                  <ion-button class="botaoconfirmarmodalfiltrar" (click)="confirm()"
+                    [strong]="true">Confirmar</ion-button>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-button class="botaosairmodalfiltrar" (click)="cancel()">Sair</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+      </ion-row>
+
+    </ng-template>
+  </ion-content>
+</ion-modal>
+
+<!-- modal abrir receitas -->
+<ion-modal [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
+  <ng-template>
+    <ion-item button="true" detail="false" (click)="setOpen(false, this.receita_selecionada)" class="cardzin" lines="none"
+      routerLink="/receita">
+      <div class="imagemprincipal" 
+      [ngStyle]="{'background-image' : receita_selecionada.src ? 'url(' + receita_selecionada.src +')' : 'url('+ img_not_found +')'}">
+    </div>
+      <ion-col size="7">
+        <h1>{{this.receita_selecionada.nome}}</h1>
+        <h4>{{this.receita_selecionada.descricao}}</h4>
+      </ion-col>
+      <ion-col size="2" class="colcard">
+        <div class="restri">
+          <ng-container *ngFor="let botao of this.receita_selecionada.restricoes">
+            
+            
+            <img src="{{ botao }}" class="iconsrestr">
+          </ng-container>
+        </div>
+      </ion-col>
+    </ion-item>
+  </ng-template>
+</ion-modal>
+
+

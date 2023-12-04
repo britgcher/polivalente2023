@@ -1,0 +1,106 @@
+
+<ion-header collapse="fade">
+
+  <!-- HEADER -->
+  <ion-row size="12" class="ion-align-items-center ion-justify-content-center">
+
+    <ion-col size="2" size-lg="1.3">
+      <img srcset="../../assets/polivalente.png" width="70px" height="70px" id="logo" routerLink="/home">
+    </ion-col>
+
+    <ion-col class="ipad" size="0" size-lg="1.7">
+      <h1 id="titulo">Polivalente</h1>
+    </ion-col>
+
+
+    <ion-col id="barrapesquisa" size="8" size-lg="7" class="ion-text-start">
+      <ion-searchbar show-cancel-button="never" class="barrapesquisasb" placeholder="Pesquisar..."
+        class="custom"></ion-searchbar>
+    </ion-col>
+
+
+
+
+    <ion-col size="2" size-lg="2">
+      <a>
+        <ion-icon name="person-circle-outline" id="perfil" routerLink="/login"></ion-icon>
+      </a>
+    </ion-col>
+  </ion-row>
+
+</ion-header>
+
+<!-- OPÇOES -->
+<div *ngIf="isMobile">
+  <ion-item (click)="toggleAccordion()"><ion-icon name="chevron-down-outline"></ion-icon></ion-item>
+  <div *ngIf="isAccordionOpen" [@slideDownUp]>
+    <ion-row size="12" class="ion-align-items-center ion-justify-content-center" id="segundoheader">
+      <ion-col id="widthbotao" size="12">
+        <ion-row>
+          <ion-col id="botoesopcoes" size="12" size-md="6" size-lg="3">
+            <ion-button routerLink="/semgluten">
+              <h2>SEM GLÚTEN</h2>
+              <img src="../assets/gluten.png" id="imagemopcoes">
+            </ion-button>
+          </ion-col>
+
+          <ion-col id="botoesopcoes" size="12" size-md="6" size-lg="3">
+            <ion-button routerLink="/semlactose">
+              <h2>SEM LACTOSE</h2>
+              <img src="../assets/lactose.png" id="imagemopcoes">
+            </ion-button>
+          </ion-col>
+
+          <ion-col id="botoesopcoes" size="12" size-md="6" size-lg="3">
+            <ion-button routerLink="/semacucar">
+              <h2>SEM AÇÚCAR</h2>
+              <img src="../assets/açucar.png" id="imagemopcoes">
+            </ion-button>
+          </ion-col>
+
+          <ion-col id="botoesopcoes" size="12" size-md="6" size-lg="3">
+            <ion-button routerLink="/lowcarb">
+              <h2>LOW CARB</h2>
+              <img src="../assets/carboidrato.png" id="imagemopcoes">
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>
+<div *ngIf="!isMobile">
+  <ion-row size="12" class="ion-align-items-center ion-justify-content-center" id="segundoheader">
+    <ion-col id="widthbotao" size="12">
+      <ion-row>
+        <ion-col id="botoesopcoes" size="12" size-md="6" size-lg="3">
+          <ion-button routerLink="/semgluten">
+            <h2>SEM GLÚTEN</h2>
+            <img src="../assets/gluten.png" id="imagemopcoes">
+          </ion-button>
+        </ion-col>
+
+        <ion-col id="botoesopcoes" size="12" size-md="6" size-lg="3">
+          <ion-button routerLink="/semlactose">
+            <h2>SEM LACTOSE</h2>
+            <img src="../assets/lactose.png" id="imagemopcoes">
+          </ion-button>
+        </ion-col>
+
+        <ion-col id="botoesopcoes" size="12" size-md="6" size-lg="3">
+          <ion-button routerLink="/semacucar">
+            <h2>SEM AÇÚCAR</h2>
+            <img src="../assets/açucar.png" id="imagemopcoes">
+          </ion-button>
+        </ion-col>
+
+        <ion-col id="botoesopcoes" size="12" size-md="6" size-lg="3">
+          <ion-button routerLink="/lowcarb">
+            <h2>LOW CARB</h2>
+            <img src="../assets/carboidrato.png" id="imagemopcoes">
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</div>
