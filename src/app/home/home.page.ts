@@ -8,6 +8,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { HeaderComponent } from '../header/header.component';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -53,10 +56,18 @@ export class HomePage {
 
 
 //receitas
+
 setOpen(isOpen: boolean, receita: any | null) {
   this.isModalOpen = isOpen;
   this.receita_selecionada = receita;
-  localStorage.setItem('receita', JSON.stringify(receita))
+}
+
+closeModalAndNavigate() {
+  setTimeout(() => {
+    this.isModalOpen = false;
+    this.router.navigate(['/receita']);
+  }, 500);
+
 }
 
 onWillDismiss(event: Event) {
@@ -74,6 +85,8 @@ listarReceitas() {
       console.log(this.receitas)
     })
 }
+
+
 
 
 toggleFilter() {
@@ -105,6 +118,8 @@ toggleFilter() {
     private _crudService: CrudService,
     public storage: Storage,
     private _message: MessageService,
+    private navCtrl: NavController,
+    private router: Router,
   ) {} 
 
  

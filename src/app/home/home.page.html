@@ -154,19 +154,19 @@
 
           <ion-row class="ion-align-items-center ion-justify-content-center">
             <ion-col size="10" id="caixamodalreceitaopcoes">
-              <ion-checkbox  [(ngModel)]="opcoesSelecionadas.entrada" labelPlacement="end">
+              <ion-checkbox  (click)="opcoesSelecionadas.entrada" labelPlacement="end">
                 <h4>Entrada</h4>
               </ion-checkbox>
               <br />
-              <ion-checkbox  [(ngModel)]="opcoesSelecionadas.pratoP" labelPlacement="end">
+              <ion-checkbox  (click)="opcoesSelecionadas.pratoP" labelPlacement="end">
                 <h4>Prato principal</h4>
               </ion-checkbox>
               <br />
-              <ion-checkbox  [(ngModel)]="opcoesSelecionadas.petisco" labelPlacement="end">
+              <ion-checkbox  (click)="opcoesSelecionadas.petisco" labelPlacement="end">
                 <h4>Petisco</h4>
               </ion-checkbox>
               <br />
-              <ion-checkbox   [(ngModel)]="opcoesSelecionadas.sobremesa" labelPlacement="end">
+              <ion-checkbox (click)="opcoesSelecionadas.sobremesa" labelPlacement="end">
                 <h4>Sobremesa</h4>
               </ion-checkbox>
               <br />
@@ -279,7 +279,7 @@
                 </ion-col>
               </ion-row>
               <ion-row><ion-col size="12">
-                  <ion-icon id="setinha" routerLink="/receita" name="arrow-forward-outline"></ion-icon>
+                  <ion-icon id="setinha" (click)="closeModalAndNavigate()" name="arrow-forward-outline"></ion-icon>
                 </ion-col>
               </ion-row>
 

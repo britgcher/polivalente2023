@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ReceitaPage } from './receita/receita.page';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
   {
     path: 'lowcarb',
     loadChildren: () => import('./lowcarb/lowcarb.module').then( m => m.LowcarbPagePageModule)
-  },  {
+  },
+  {
     path: 'semgluten',
     loadChildren: () => import('./semgluten/semgluten.module').then( m => m.SemglutenPageModule)
   },

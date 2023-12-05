@@ -1,23 +1,19 @@
 <ion-content [fullscreen]="true">
   <ion-row class="ion-justify-content-center" id="banner">
-    <ion-col size="12" size-mg="12" size-lg="12" class="ion-text-center full-height">
+    <ion-col size="12" size="12" size-lg="12" class="ion-text-center full-height">
       <ion-header collapse="fade">
       </ion-header>
 
-      <ion-row class="ion-justify-content-center align-items-center" id="eve">
-
-
-        <ion-col id="co2">
-          <img src="assets/polivalente.png" id="logo">
-          <h2 id="titulo">Qualidade sem restrições</h2>
-
-          <p>Não tem uma conta? Crie aqui!!</p>
-
-          <ion-button routerLink="/login">Cadastro</ion-button>
-
-        </ion-col>
-
+      <ion-row class="ion-text-center">
         <ion-col>
+          <h1 class="polivalentetitulo">
+            Polivalente
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row size="12" size-lg="6" class="ion-justify-content-center ion-align-items-center">
+
+        <ion-col size="12" size-lg="6" class="colunacadastro">
           <h1 id="titulo">Login</h1>
 
           <div container>
@@ -26,18 +22,24 @@
                 placeholder="Insira seu endereço de email">
               </ion-input>
             </ion-item>
-
+           
             <ion-item id="caixa" lines="none">
               <ion-input label="Senha" labelPlacement="stacked" type="password" placeholder="Crie sua senha">
               </ion-input>
             </ion-item>
           </div>
-
-
           <ion-button routerLink="/home">Confirmar</ion-button>
         </ion-col>
-
+  
+        <ion-col class="colunaprairlogin" size="12" size-lg="6">
+          <img src="../assets/polivalente.png" id="logo">
+          <h2 id="titulo">Qualidade sem restrições</h2>
+          <p id="japossui">Não possui uma conta? Cadastre-se aqui!</p>
+          <ion-button id="buttonlogin" routerLink="/cadastro">Cadastro</ion-button>
+        </ion-col>
       </ion-row>
+
+
 
 
     </ion-col>
