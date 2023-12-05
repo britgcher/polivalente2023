@@ -18,10 +18,31 @@ const routes: Routes = [
   {
     path: 'receita',
     loadChildren: () => import('./receita/receita.module').then( m => m.ReceitaPageModule)
-  },  {
+  },
+  {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'semlactose',
+    loadChildren: () => import('./semlactose/semlactose.module').then( m => m.SemlactosePageModule)
+  },
+  {
+    path: 'lowcarb',
+    loadChildren: () => import('./lowcarb/lowcarb.module').then( m => m.LowcarbPagePageModule)
+  },  {
+    path: 'semgluten',
+    loadChildren: () => import('./semgluten/semgluten.module').then( m => m.SemglutenPageModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   }
+
 
 
 ];
