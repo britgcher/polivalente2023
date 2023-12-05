@@ -1,0 +1,79 @@
+<ion-content [fullscreen]="true">
+  <ion-row class="ion-justify-content-center" id="banner">
+    <ion-col size="12" size-mg="12" size-lg="12" class="ion-text-center full-height">
+      <!-- <app-header></app-header> -->
+      <ion-row id="container">
+        <ion-col size="6">
+          <img src="https://images.pexels.com/photos/8391387/pexels-photo-8391387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" id="fotoperfil">
+          <h2 id="nome">Eric Fã do Harry</h2> <!-- <h1>{{ usuarioLogado.nome }}</h1> -->
+        </ion-col>
+
+        <!-- COL CENTRAL ONDE FICAM OS ICONES -->
+        <ion-col size="1">
+          <ion-row class="ion-align-items-center ion-justify-content-center" id="separacurt" (click)="handleCurtirClick()">
+            <ion-icon name="heart-outline" id="curti"></ion-icon>
+          </ion-row>
+          <ion-row class="ion-align-items-center ion-justify-content-center" id="separafavo" (click)="handleFavoritoClick()">
+            <ion-icon name="star-outline" id="favos"></ion-icon>
+          </ion-row>
+        </ion-col>
+
+        <!-- COL PARA CURTIDAS -->
+        <ion-col size="5" *ngIf="selected=='curti'" id="espacoreceitascurti">
+          <ion-content id="contentcurti">
+            <ion-list id="contentcurti">
+              <div id="imgholdercurti" lines="none">
+                <ion-row class="ion-align-items-center ion-justify-content-center ion-text-center">
+                  <ion-col size-lg="4" size="12">
+                    <img src="https://images.pexels.com/photos/18437691/pexels-photo-18437691/free-photo-of-jantar-janta-fotografia-de-alimentos-fotografia-de-comida.jpeg?auto=compress&cs=tinysrgb&w=1600" id="imagensrec">
+                  </ion-col>
+                  <ion-col size-lg="4" size="12" id="nomeava">
+                    <h1 id="nomereceita">NOME DA RECEITA</h1>
+                    <p></p>
+                    <h2 id="avaliacao" class="positiva">AVALIAÇÃO 76% <ion-icon name="thumbs-up-outline"></ion-icon></h2>
+                  </ion-col>
+                  <ion-col size-lg="4" size="12">
+                    <div id="restri">
+                      <img src="../assets/gluten.png" id="gluten" class="iconsrestr">
+                      <img src="../assets/carboidrato.png" id="carboidrato" class="iconsrestr">
+                      <img src="../assets/gluten.png" id="gluten" class="iconsrestr">
+                      <img src="../assets/carboidrato.png" id="carboidrato" class="iconsrestr">                    </div>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-list>
+          </ion-content>
+        </ion-col>
+
+        <!-- COL PARA FAVORITOS -->
+        <ion-col size="5" *ngIf="selected=='favos'" id="espacoreceitasfavos">
+          <ion-content id="conteudi">
+            <ion-list id="listinha">
+              <div id="imgholder" lines="none">
+                <ion-row class="ion-align-items-center ion-justify-content-center ion-text-center">
+                  <ion-col size-lg="4" size="12">
+                    <img src="https://images.pexels.com/photos/18437691/pexels-photo-18437691/free-photo-of-jantar-janta-fotografia-de-alimentos-fotografia-de-comida.jpeg?auto=compress&cs=tinysrgb&w=1600" id="imagensrec">
+                  </ion-col>
+                  <ion-col size-lg="4" size="12" id="nomeava">
+                    <h1 id="nomereceita">NOME DA RECEITA</h1>
+                    <p></p>
+                    <h2 id="avaliacao" class="positiva">AVALIAÇÃO 76% <ion-icon name="thumbs-up-outline"></ion-icon></h2>
+                  </ion-col>
+                  <ion-col size-lg="4" size="12">
+                    <div id="restri">
+                      <img src="../assets/gluten.png" id="gluten" class="iconsrestr">
+                      <img src="../assets/carboidrato.png" id="carboidrato" class="iconsrestr">
+                      <img src="../assets/gluten.png" id="gluten" class="iconsrestr">
+                      <img src="../assets/carboidrato.png" id="carboidrato" class="iconsrestr">
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-list>
+          </ion-content>
+        </ion-col>
+
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>

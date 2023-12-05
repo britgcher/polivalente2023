@@ -125,6 +125,7 @@
   </ion-row>
 </ion-content>
 
+
 <!-- Modal Filtrar -->
 <ion-modal trigger="open-modal">
   <ion-content class="ion-padding">
@@ -135,30 +136,27 @@
 
           <ion-row class="ion-text-center">
             <ion-col>
-              <h1 id="titulotipo">Tipo</h1>
+              <h1 style="color:black; font-weight:300; background-color:rgb(204, 170, 237);" id="titulotipo">Tipo</h1>
             </ion-col>
           </ion-row>
 
           <ion-row class="ion-align-items-center ion-justify-content-center">
             <ion-col size="10" id="caixamodalreceitaopcoes">
-              <ion-checkbox labelPlacement="end">Entrada</ion-checkbox>
+              <ion-checkbox labelPlacement="end"><h4>Entrada</h4></ion-checkbox>
               <br />
-              <ion-checkbox labelPlacement="end">Prato principal</ion-checkbox>
+              <ion-checkbox labelPlacement="end"><h4>Prato principal</h4></ion-checkbox>
               <br />
-              <ion-checkbox labelPlacement="end">Petisco</ion-checkbox>
+              <ion-checkbox labelPlacement="end"><h4>Petisco</h4></ion-checkbox>
               <br />
-              <ion-checkbox labelPlacement="end">Bebida</ion-checkbox>
-              <br />
-              <ion-checkbox labelPlacement="end">Sobremesa</ion-checkbox>
+              <ion-checkbox labelPlacement="end"><h4>Sobremesa</h4></ion-checkbox>
               <br />
 
               <ion-row class="ion-text-center ion-justify-content-center ion-align-items-center">
                 <ion-col size="6">
-                  <ion-button class="botaoconfirmarmodalfiltrar" (click)="confirm()"
-                    [strong]="true">Confirmar</ion-button>
+                  <ion-icon class="icontipo" (click)="confirm()" name="checkbox"></ion-icon>
                 </ion-col>
                 <ion-col size="6">
-                  <ion-button class="botaosairmodalfiltrar" (click)="cancel()">Sair</ion-button>
+                  <ion-icon class="icontipo" (click)="cancel()" name="close-circle"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-col>
@@ -172,28 +170,106 @@
 </ion-modal>
 
 <!-- modal abrir receitas -->
-<ion-modal [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
+<ion-modal id="modalreceita" [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
   <ng-template>
-    <ion-item button="true" detail="false" (click)="setOpen(false, this.receita_selecionada)" class="cardzin" lines="none"
-      routerLink="/receita">
-      <div class="imagemprincipal" 
-      [ngStyle]="{'background-image' : receita_selecionada.src ? 'url(' + receita_selecionada.src +')' : 'url('+ img_not_found +')'}">
-    </div>
-      <ion-col size="7">
-        <h1>{{this.receita_selecionada.nome}}</h1>
-        <h4>{{this.receita_selecionada.descricao}}</h4>
+    <ion-item class="fundomodal" button="true" detail="false" (click)="setOpen(false, receita_selecionada)"
+      lines="none">
+
+
+      <ion-col id="modalreceitaestrutura" size="12">
+        <ion-row>
+          <ion-col class="colunaimagem" size="12" size-lg="3">
+            <div class="imagemodalabrirreceitas"
+              [ngStyle]="{'background-image': receita_selecionada.src ? 'url(' + receita_selecionada.src + ')' : 'url(' + img_not_found + ')'}">
+            </div>
+          </ion-col>
+
+          <ion-col size="12" size-lg="5.5" id="colunaesquerdamodalreceita">
+            <ng-container *ngIf="receita_selecionada.nome || receita_selecionada.descricao">
+
+              <ion-row>
+                <ion-col size="12">
+                  <h1 id="nomereceitamodal" *ngIf="receita_selecionada.nome">{{ receita_selecionada.nome }}</h1>
+                </ion-col>
+                <ion-col size="12">
+                  <p id="descricaoreceitamodal" *ngIf="receita_selecionada.descricao">{{receita_selecionada.descricao}}
+                  </p>
+                </ion-col>
+              </ion-row>
+
+            </ng-container>
+            <ng-container *ngIf="!receita_selecionada.nome && !receita_selecionada.descricao">
+              <p style="color:rgb(112, 44, 202); font-weight: bold;">
+                Sem informações sobre a receita</p>
+            </ng-container>
+          </ion-col>
+
+          <ion-col size-lg="3.5" size="12" class="ion-align-items-center ion-justify-content-center ion-text-center"
+            id="colunadireitamodalreceita">
+            <div id="variacoesreceitas">
+
+              <ion-col size-lg="3" size="12">
+
+                <ion-col>
+                  <h6 class="hstipos">Tipo</h6>
+                </ion-col>
+
+                <ion-col size="12">
+                  <ion-row>
+                    <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.entrada}">
+                      <h6 class="tipos"
+                        [ngStyle]="{'background-color': !receita_selecionada.entrada ? 'gray' : 'cinza', 'color': receita_selecionada.entrada ? 'rgb(231, 221, 237)' : 'branco'}">
+                        Entrada</h6>
+                    </ion-col>
+  
+                    <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.pratoP}">
+                      <h6 class="tipos"
+                        [ngStyle]="{'background-color': !receita_selecionada.pratoP ? 'gray' : 'cinza', 'color': receita_selecionada.pratoP ? 'rgb(231, 221, 237)' : 'branco'}">
+                        Prato Principal</h6>
+                    </ion-col>
+  
+                    <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.petisco}">
+                      <h6 class="tipos"
+                        [ngStyle]="{'background-color': !receita_selecionada.petisco ? 'gray' : 'cinza', 'color': receita_selecionada.petisco ? 'rgb(231, 221, 237)' : 'branco'}">
+                        Petisco</h6>
+                    </ion-col>
+  
+                    <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.sobremesa}">
+                      <h6 class="tipos"
+                        [ngStyle]="{'background-color': !receita_selecionada.sobremesa ? 'gray' : 'cinza', 'color': receita_selecionada.sobremesa ? 'rgb(231, 221, 237)' : 'branco'}">
+                        Sobremesa</h6>
+                    </ion-col>
+                  </ion-row>
+                  
+                </ion-col>
+              </ion-col>
+
+              <ion-row id="linhavariacoes">
+                <ion-col size-lg="6" size="3" [ngClass]="{'variacao-cinza': !receita_selecionada.semAcucar}">
+                  <img class="variacoes" src="../../assets/açucar.png">
+                </ion-col>
+                <ion-col size-lg="6" size="3" [ngClass]="{'variacao-cinza': !receita_selecionada.semGluten}">
+                  <img class="variacoes" src="../../assets/gluten.png">
+                </ion-col>
+                <ion-col size-lg="6" size="3" [ngClass]="{'variacao-cinza': !receita_selecionada.semLactose}">
+                  <img class="variacoes" src="../../assets/lactose.png">
+                </ion-col>
+                <ion-col size-lg="6" size="3" [ngClass]="{'variacao-cinza': !receita_selecionada.lowCarb}">
+                  <img class="variacoes" src="../../assets/carboidrato.png">
+                </ion-col>
+              </ion-row>
+              <ion-row><ion-col size="12">
+                <ion-icon id="setinha" routerLink="/receita" name="arrow-forward-outline"></ion-icon>
+              </ion-col>
+            </ion-row>
+              
+            </div>
+          </ion-col>
+        </ion-row>
       </ion-col>
-      <ion-col size="2" class="colcard">
-        <div class="restri">
-          <ng-container *ngFor="let botao of this.receita_selecionada.restricoes">
-            
-            
-            <img src="{{ botao }}" class="iconsrestr">
-          </ng-container>
-        </div>
-      </ion-col>
+
+
+
     </ion-item>
   </ng-template>
 </ion-modal>
-
-

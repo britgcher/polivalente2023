@@ -10,10 +10,19 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'semacucar',
     loadChildren: () => import('./semacucar/semacucar.module').then( m => m.SemacucarPageModule)
+  },
+  {
+    path: 'receita',
+    loadChildren: () => import('./receita/receita.module').then( m => m.ReceitaPageModule)
+  },  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   }
+
 
 ];
 

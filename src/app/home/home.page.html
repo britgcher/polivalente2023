@@ -4,7 +4,7 @@
 
       <!-- header -->
       <app-header></app-header>
-      
+
       <!-- titulo -->
       <ion-row class="ion-align-items-center" id="tituloid">
         <ion-col></ion-col>
@@ -30,15 +30,35 @@
             </ion-col>
 
             <!-- Coluna do meio -->
-            <ion-col size="8" size-lg="10" class="ion-align-items-center ion-justify-content-center">
-              <ion-row>
-                <ion-col size="12" size-md="6" size-lg="4" *ngFor="let receita of this.receitas">
-                  <div class="imagemprincipal" (click)="setOpen(true, receita)"
-                    [ngStyle]="{'background-image' : receita.src ? 'url(' + receita.src +')' : 'url('+ img_not_found +')'}">
-                  </div>
-                </ion-col>
-              </ion-row>
-            </ion-col>
+           <ion-col size="8" size-lg="10" class="ion-align-items-center ion-justify-content-center">
+            <ion-row>
+              <ion-col size="12" size-md="6" size-lg="4" *ngFor="let receita of this.receitas">
+                <div class="imagemprincipal" (click)="setOpen(true, receita)"
+                  [ngStyle]="{'background-image' : receita.src ? 'url(' + receita.src +')' : 'url('+ img_not_found +')'}"
+                  *ngIf="!filtrosAtivos || (
+                  (opcoesSelecionadas.entrada && receita_selecionada.entrada) ||
+                  (opcoesSelecionadas.pratoprincipal && receita_selecionada.pratoP) ||
+                  (opcoesSelecionadas.petisco && receita_selecionada.petisco) ||
+                  (opcoesSelecionadas.sobremesa && receita_selecionada.sobremesa)
+                )">
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+           
+           
+            <!-- <ion-col size="12" size-md="6" size-lg="4" *ngFor="let receita of receitas">
+              <div class="imagemprincipal" (click)="setOpen(true, receita)"
+                [ngStyle]="{'background-image' : receita.src ? 'url(' + receita.src +')' : 'url('+ img_not_found +')'}"
+                *ngIf="!filtrosAtivos || (
+                  (opcoesSelecionadas.entrada && receita.entrada) ||
+                  (opcoesSelecionadas.pratoprincipal && receita.pratoP) ||
+                  (opcoesSelecionadas.petisco && receita.petisco) ||
+                  (opcoesSelecionadas.sobremesa && receita.sobremesa)
+                )">
+              </div>
+            </ion-col> -->
+
 
             <!-- Coluna da direita -->
             <ion-col size="2" size-lg="1">
@@ -134,13 +154,21 @@
 
           <ion-row class="ion-align-items-center ion-justify-content-center">
             <ion-col size="10" id="caixamodalreceitaopcoes">
-              <ion-checkbox labelPlacement="end"><h4>Entrada</h4></ion-checkbox>
+              <ion-checkbox  [(ngModel)]="opcoesSelecionadas.entrada" labelPlacement="end">
+                <h4>Entrada</h4>
+              </ion-checkbox>
               <br />
-              <ion-checkbox labelPlacement="end"><h4>Prato principal</h4></ion-checkbox>
+              <ion-checkbox  [(ngModel)]="opcoesSelecionadas.pratoP" labelPlacement="end">
+                <h4>Prato principal</h4>
+              </ion-checkbox>
               <br />
-              <ion-checkbox labelPlacement="end"><h4>Petisco</h4></ion-checkbox>
+              <ion-checkbox  [(ngModel)]="opcoesSelecionadas.petisco" labelPlacement="end">
+                <h4>Petisco</h4>
+              </ion-checkbox>
               <br />
-              <ion-checkbox labelPlacement="end"><h4>Sobremesa</h4></ion-checkbox>
+              <ion-checkbox   [(ngModel)]="opcoesSelecionadas.sobremesa" labelPlacement="end">
+                <h4>Sobremesa</h4>
+              </ion-checkbox>
               <br />
 
               <ion-row class="ion-text-center ion-justify-content-center ion-align-items-center">
@@ -213,26 +241,26 @@
                         [ngStyle]="{'background-color': !receita_selecionada.entrada ? 'gray' : 'cinza', 'color': receita_selecionada.entrada ? 'rgb(231, 221, 237)' : 'branco'}">
                         Entrada</h6>
                     </ion-col>
-  
+
                     <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.pratoP}">
                       <h6 class="tipos"
                         [ngStyle]="{'background-color': !receita_selecionada.pratoP ? 'gray' : 'cinza', 'color': receita_selecionada.pratoP ? 'rgb(231, 221, 237)' : 'branco'}">
                         Prato Principal</h6>
                     </ion-col>
-  
+
                     <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.petisco}">
                       <h6 class="tipos"
                         [ngStyle]="{'background-color': !receita_selecionada.petisco ? 'gray' : 'cinza', 'color': receita_selecionada.petisco ? 'rgb(231, 221, 237)' : 'branco'}">
                         Petisco</h6>
                     </ion-col>
-  
+
                     <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.sobremesa}">
                       <h6 class="tipos"
                         [ngStyle]="{'background-color': !receita_selecionada.sobremesa ? 'gray' : 'cinza', 'color': receita_selecionada.sobremesa ? 'rgb(231, 221, 237)' : 'branco'}">
                         Sobremesa</h6>
                     </ion-col>
                   </ion-row>
-                  
+
                 </ion-col>
               </ion-col>
 
@@ -251,10 +279,10 @@
                 </ion-col>
               </ion-row>
               <ion-row><ion-col size="12">
-                <ion-icon id="setinha" routerLink="/receita" name="arrow-forward-outline"></ion-icon>
-              </ion-col>
-            </ion-row>
-              
+                  <ion-icon id="setinha" routerLink="/receita" name="arrow-forward-outline"></ion-icon>
+                </ion-col>
+              </ion-row>
+
             </div>
           </ion-col>
         </ion-row>
@@ -265,66 +293,3 @@
     </ion-item>
   </ng-template>
 </ion-modal>
-
-
-
-
-
-<!-- RECEITAS -->
-<!-- <ion-row class= "ion-justify-content-center ion-align-items-center">
-       <ion-col size-sm="0" size-md="0" size-lg="3" size-xl="3">anuncio</ion-col>
-       <ion-col size="1">void</ion-col>
-       <ion-col size-sm="10" size-md="10" size-lg="6" size-xl="6">
-         <div class="imagens">
-           <ng-container *ngFor="let receita of this.receitas">
-             <img src="{{receita.src}}" (click)="setOpen(true, receita)" expand="block" class="imgrec">
-           </ng-container>
-     
-           <ion-modal [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
-             <ng-template>
-               <ion-item button="true" detail="false" (click)="setOpen(false, null)" class="cardzin" lines="none" routerLink="/receita">
-                 <img src="{{this.receita_selecionada.src}}" class="imgrec">
-                 <ion-col size="7">
-                   <h5 class="nomerec">{{this.receita_selecionada.nomerec}}</h5>
-                   <h4>{{this.receita_selecionada.descricao}}</h4>
-                 </ion-col>
-                 <ion-col size="2" class="colcard">
-                   <div class="restri">
-                     <ng-container *ngFor="let botao of this.receita_selecionada.restricoes">
-                       <img src="{{ botao }}" class="iconsrestr">
-                     </ng-container>
-                   </div>
-                 </ion-col>
-               </ion-item>
-             </ng-template>
-           </ion-modal>
-         </div>
-       </ion-col> -->
-
-<!-- FILTRAGEM -->
-
-<!-- <ion-row>
-        <ion-col class="ion-justify-content-center">
-          <ion-button expand="block" id="toggleFilterButton" (click)="toggleFilter()">Esconder Filtro</ion-button>
-        </ion-col>
-       </ion-row>
-       
-
-       <ion-col size="2" class="ion-align-items-center">
-         <div class="box">
-           <h1 id="letreiro">Tipo</h1>
-        
-           <div class="boxxie">
-             <ion-checkbox labelPlacement="end">Entrada</ion-checkbox>
-             <br/>
-             <ion-checkbox labelPlacement="end">Prato principal</ion-checkbox>
-             <br/>
-             <ion-checkbox labelPlacement="end">Petisco</ion-checkbox>
-             <br/>
-             <ion-checkbox labelPlacement="end">Bebida</ion-checkbox>
-             <br/>
-             <ion-checkbox labelPlacement="end">Sobremesa</ion-checkbox>
-             <br/>
-           </div>
-         </div>
-       </ion-col> -->
