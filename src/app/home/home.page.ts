@@ -10,6 +10,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { HeaderComponent } from '../header/header.component';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 
 @Component({
@@ -57,16 +58,16 @@ export class HomePage {
 
 //receitas
 
-setOpen(isOpen: boolean, receita: any | null) {
+setOpen(isOpen: boolean, receita: any) {
   this.isModalOpen = isOpen;
   this.receita_selecionada = receita;
+  localStorage.setItem('receita', JSON.stringify(receita))
 }
 
-closeModalAndNavigate() {
+fecharModal() {
   setTimeout(() => {
-    this.isModalOpen = false;
-    this.router.navigate(['/receita']);
-  }, 500);
+    this.modalController.dismiss({ dismissed: true });
+  }, 50);
 
 }
 
@@ -120,6 +121,7 @@ toggleFilter() {
     private _message: MessageService,
     private navCtrl: NavController,
     private router: Router,
+    private modalController: ModalController,
   ) {} 
 
  

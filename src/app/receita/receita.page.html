@@ -1,8 +1,16 @@
 <ion-content>
   <!-- DIVIDER -->
-  
-  <app-header></app-header>
 
+  <!-- HEADER -->
+
+  <ion-row style="background-color: rgb(184, 140, 224);">
+    <ion-col>
+      <img srcset="../../assets/polivalente.png" width="70px" height="70px" id="logo" routerLink="/home">
+    </ion-col>
+  </ion-row>
+   
+
+    
   <ion-row id="paginaprincipal">
     <ion-col class="ion-align-items-center ion-justify-content-center ion-text-center" size="9" size="12">
       <ion-row id="espacamento">
@@ -85,7 +93,7 @@
 
       <!-- DIVIDER -->
 
-      <ion-row class="align-items-center" id="espacamento">
+      <!-- <ion-row class="align-items-center" id="espacamento">
         <ion-col size="1"></ion-col>
         <ion-col  size-lg="3" size="0" id="divider"></ion-col>
         <ion-col class="ion-justify-content-center ion-text-center" size="10" size-lg="4" id="nomerec">
@@ -95,8 +103,31 @@
         </ion-col>
         <ion-col   size-lg="3" size="0" id="divider"></ion-col>
         <ion-col size="1"></ion-col>
-      </ion-row>
+      </ion-row> -->
 
+
+      <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center" id="footer">
+
+        <ion-col size="12" size-lg="4" id="colunasfooter">
+          <ion-title id="redesfooter">Redes Sociais</ion-title>
+          <ion-icon name="logo-tiktok" id="iconesredes"></ion-icon>
+          <ion-icon name="logo-instagram" id="iconesredes"></ion-icon>
+        </ion-col>
+
+        <ion-col size="12" size-lg="4" id="colunasfooter">
+          <ion-title id="titulofooter">Polivalente</ion-title>
+          <img src="../../assets/polivalente.png" width="70px" height="70px" id="logofooter">
+        </ion-col>
+
+        <ion-col size="12" size-lg="4" id="colunasfooter">
+          <ion-title id="titulofooter">Envie-nos sua receita!</ion-title>
+          <ion-icon name="mail-outline" id="iconesredes"></ion-icon>
+        </ion-col>
+
+      </ion-row>
     </ion-col>
+  </ion-row>
+
+    
 
 

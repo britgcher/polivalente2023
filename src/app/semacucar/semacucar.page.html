@@ -3,13 +3,13 @@
     <ion-col size="12" class="ion-text-center full-height">
 
       <!-- header -->
-      <!-- <app-header></app-header> -->
+      <app-header></app-header>
 
       <!-- titulo -->
       <ion-row class="ion-align-items-center" id="tituloid">
         <ion-col></ion-col>
         <ion-col size="3" size-lg="3" id="divider"></ion-col>
-        <ion-col size="4" size-lg="3" id="titulo">Receitas</ion-col>
+        <ion-col size="4" size-lg="3" id="titulo">Receitas Sem Açúcar</ion-col>
         <ion-col size="3" size-lg="3" id="divider"></ion-col>
         <ion-col></ion-col>
       </ion-row>
@@ -221,26 +221,26 @@
                         [ngStyle]="{'background-color': !receita_selecionada.entrada ? 'gray' : 'cinza', 'color': receita_selecionada.entrada ? 'rgb(231, 221, 237)' : 'branco'}">
                         Entrada</h6>
                     </ion-col>
-  
+
                     <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.pratoP}">
                       <h6 class="tipos"
                         [ngStyle]="{'background-color': !receita_selecionada.pratoP ? 'gray' : 'cinza', 'color': receita_selecionada.pratoP ? 'rgb(231, 221, 237)' : 'branco'}">
                         Prato Principal</h6>
                     </ion-col>
-  
+
                     <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.petisco}">
                       <h6 class="tipos"
                         [ngStyle]="{'background-color': !receita_selecionada.petisco ? 'gray' : 'cinza', 'color': receita_selecionada.petisco ? 'rgb(231, 221, 237)' : 'branco'}">
                         Petisco</h6>
                     </ion-col>
-  
+
                     <ion-col class="colunatipos" size="6" [ngClass]="{'tipos-cinza': receita_selecionada.sobremesa}">
                       <h6 class="tipos"
                         [ngStyle]="{'background-color': !receita_selecionada.sobremesa ? 'gray' : 'cinza', 'color': receita_selecionada.sobremesa ? 'rgb(231, 221, 237)' : 'branco'}">
                         Sobremesa</h6>
                     </ion-col>
                   </ion-row>
-                  
+
                 </ion-col>
               </ion-col>
 
@@ -258,11 +258,15 @@
                   <img class="variacoes" src="../../assets/carboidrato.png">
                 </ion-col>
               </ion-row>
-              <ion-row><ion-col size="12">
-                <ion-icon id="setinha" routerLink="/receita" name="arrow-forward-outline"></ion-icon>
-              </ion-col>
-            </ion-row>
-              
+              <ion-row class="ion-align-items-center ion-justify-content-center">
+                <ion-col size="3">
+                  <ion-icon id="setinha" routerLink="/receita" name="arrow-forward-outline"></ion-icon>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-icon id="setinha" (click)="fecharModal()" name="close-circle-outline"></ion-icon>
+                </ion-col>
+              </ion-row>
+
             </div>
           </ion-col>
         </ion-row>

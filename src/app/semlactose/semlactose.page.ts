@@ -4,7 +4,7 @@ import { CrudService } from '../services/crud.service';
 import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { MessageService } from '../services/message.service';
 import { IonModal } from '@ionic/angular';
-
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-semlactose',
   templateUrl: './semlactose.page.html',
@@ -61,11 +61,19 @@ export class SemlactosePage {
     src:null
   }
 
+  fecharModal() {
+    setTimeout(() => {
+      this.modalController.dismiss({ dismissed: true });
+    }, 50);
+  
+  }
+
   constructor(
     public _authenticate: AuthenticateService,
     private _crudService: CrudService,
     public storage: Storage,
-    private _message: MessageService
+    private _message: MessageService,
+    private modalController: ModalController,
   ) {} 
 
   setOpen(isOpen: boolean, receita: any | null) {
